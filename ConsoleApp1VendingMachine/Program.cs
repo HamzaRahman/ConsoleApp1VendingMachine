@@ -22,13 +22,20 @@ namespace ConsoleApp1VendingMachine
                 switch (choice)
                 {
                     case 1:
-                       
+                        VM.ShowAll();
+                        Console.ReadLine();
                         break;
                     case 2:
                         Console.WriteLine("Enter Money: 1, 5, 10, 20, 50, 100, 500, 1000");
                         int ammount = Convert.ToInt32(Console.ReadLine());
                         pool = VM.InsertMoney(ammount);
                         Console.WriteLine("Ammount in machine:{0}", pool);
+                        Console.ReadLine();
+                        break;
+                    case 3:
+                        Console.WriteLine("Enter Product ID");
+                        string ID = Console.ReadLine();
+                        VM.Purchase(ID);
                         Console.ReadLine();
                         break;
                 }

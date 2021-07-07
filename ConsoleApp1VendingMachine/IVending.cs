@@ -6,7 +6,7 @@ namespace ConsoleApp1VendingMachine
 {
     public interface IVending
     {
-        void Purchase();
+        void Purchase(string ID);
         void ShowAll();
         int InsertMoney(int coin);
         void EndTransaction();
