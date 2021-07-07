@@ -73,14 +73,25 @@ namespace ConsoleApp1VendingMachine
             {
                 string itemNumber = kvp.Key.PadRight(5);
                 string productName = kvp.Value.ProductName.ToString().PadRight(10);
-                string price = kvp.Value.ProductPrice.ToString("C").PadLeft(7);
-                Console.WriteLine($"{itemNumber} {productName} Costs: {price} each");
+                string price = kvp.Value.ProductPrice.ToString().PadLeft(7);
+                Console.WriteLine($"{itemNumber} {productName} Costs: {price}kr each");
             }
         }
 
         public void EndTransaction()
         {
             throw new NotImplementedException();
+        }
+        public void Examine(string ID)
+        {
+            if (Products.ContainsKey(ID))
+            {
+                Console.WriteLine("Price:{0}kr Name:{1}",Convert.ToString(Products[ID].ProductPrice), Products[ID].ProductName);
+            }
+            else
+            {
+                Console.WriteLine("InValid ID.");
+            }
         }
 
         

@@ -12,7 +12,8 @@ namespace ConsoleApp1VendingMachine
         }
         public override void Examine()
         {
-            throw new NotImplementedException();
+            
+            Console.WriteLine(Convert.ToString(this.ProductPrice),this.ProductName);
         }
 
         public override void Use()

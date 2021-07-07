@@ -9,7 +9,7 @@ namespace ConsoleApp1VendingMachine
         static decimal pool = 0;
         static void Main(string[] args)
         { 
-            IVending VM = new VendingMachine();
+            VendingMachine VM = new VendingMachine();
             bool ProductMenu = true;
             while(ProductMenu)
             {
@@ -19,6 +19,7 @@ namespace ConsoleApp1VendingMachine
                 Console.WriteLine("Enter 1 To Show All Products");
                 Console.WriteLine("Enter 2 To Add Money");
                 Console.WriteLine("Enter 3 To Buy A Product");
+                Console.WriteLine("Enter 4 To Show A Product's Info");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -41,6 +42,13 @@ namespace ConsoleApp1VendingMachine
                         string ID = Console.ReadLine();
                         pool = VM.Purchase(ID);
                         Console.WriteLine("Ammount in machine:{0}", pool);
+                        Console.WriteLine("Press Enter To Continue");
+                        Console.ReadLine();
+                        break;
+                    case 4:
+                        Console.WriteLine("Enter Product ID");
+                        ID = Console.ReadLine();
+                        VM.Examine(ID);
                         Console.WriteLine("Press Enter To Continue");
                         Console.ReadLine();
                         break;
