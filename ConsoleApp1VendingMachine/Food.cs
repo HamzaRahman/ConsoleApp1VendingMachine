@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ConsoleApp1VendingMachine
 {
-    class Drink : Product
+    public class Food : Product
     {
-        public Drink(string productName, decimal price) : base (productName, price)
+        public Food(string productName, decimal price) : base(productName, price)
         {
 
         }
@@ -17,7 +17,7 @@ namespace ConsoleApp1VendingMachine
 
         public override void Use()
         {
-            Console.WriteLine("Drink the Drink");
+            Console.WriteLine("Eat the Snack");
         }
     }
 }

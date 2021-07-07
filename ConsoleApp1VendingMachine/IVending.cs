@@ -6,9 +6,10 @@ namespace ConsoleApp1VendingMachine
 {
     public interface IVending
     {
-        void Purchase(string ID);
+        decimal Purchase(string ID);
         void ShowAll();
-        int InsertMoney(int coin);
+        //int to decimal
+        decimal InsertMoney(int coin);
         void EndTransaction();
     }
 }

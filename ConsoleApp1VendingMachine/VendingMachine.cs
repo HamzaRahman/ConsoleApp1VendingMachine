@@ -6,26 +6,40 @@ namespace ConsoleApp1VendingMachine
 {
     class VendingMachine : IVending
     {
-        static int moneypool = 0;
+        //int to decimal
+        static decimal moneypool = 0;
         Dictionary<string, Product> Products = new Dictionary<string, Product>()
         {{"P1",new Drink("CocaCola",5)},
          {"P2",new Drink("Pepsi",5)},
          {"P3",new Drink("Mirinda",5)},
          {"P4",new Drink("Sprite",5)},
+
+         {"P5",new Food("Chocolate",5)},
+         {"P6",new Food("Chips",5)}
         };
         readonly int[] MoneyDenominations = new int[] { 1, 5, 10, 20, 50, 100, 500, 1000 };
-        public void Purchase(string ID)
+        public decimal Purchase(string ID)
         {
-            foreach (KeyValuePair<string, Product> kvp in this.Products)
+            if(Products.ContainsKey(ID))
             {
-                if(kvp.Key==ID && moneypool >= kvp.Value.ProductPrice)
+                if(moneypool >= Products[ID].ProductPrice)
                 {
-                    kvp.Value.Use();
+                    Products[ID].Use();
+                    moneypool = moneypool - Products[ID].ProductPrice;
+                }
+                else
+                {
+                    Console.WriteLine("Not Enough Money, Please Add More Money");
                 }
             }
+            else
+            {
+                Console.WriteLine("InValid Choice, Try Again");
+            }
+            return moneypool;
         }
-
-        public int InsertMoney(int coin)
+        //int to decimal
+        public decimal InsertMoney(int coin)
         {
             bool valid = true;
             

@@ -5,7 +5,8 @@ namespace ConsoleApp1VendingMachine
     class Program
     {
         //Declaring this variable as a static so we may be able to see ammount entered in the machine all time
-        static int pool = 0;
+        //int to decimal
+        static decimal pool = 0;
         static void Main(string[] args)
         { 
             IVending VM = new VendingMachine();
@@ -23,6 +24,7 @@ namespace ConsoleApp1VendingMachine
                 {
                     case 1:
                         VM.ShowAll();
+                        Console.WriteLine("Press Enter To Continue");
                         Console.ReadLine();
                         break;
                     case 2:
@@ -30,12 +32,16 @@ namespace ConsoleApp1VendingMachine
                         int ammount = Convert.ToInt32(Console.ReadLine());
                         pool = VM.InsertMoney(ammount);
                         Console.WriteLine("Ammount in machine:{0}", pool);
+                        Console.WriteLine("Press Enter To Continue");
                         Console.ReadLine();
                         break;
                     case 3:
+                        VM.ShowAll();
                         Console.WriteLine("Enter Product ID");
                         string ID = Console.ReadLine();
-                        VM.Purchase(ID);
+                        pool = VM.Purchase(ID);
+                        Console.WriteLine("Ammount in machine:{0}", pool);
+                        Console.WriteLine("Press Enter To Continue");
                         Console.ReadLine();
                         break;
                 }
