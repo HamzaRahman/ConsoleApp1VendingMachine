@@ -14,7 +14,7 @@ namespace ConsoleApp1VendingMachine
          {"P3",new Drink("Mirinda",5)},
          {"P4",new Drink("Sprite",5)},
 
-         {"P5",new Food("Chocolate",5)},
+         {"P5",new Food("Chocolate",5.4M)},
          {"P6",new Food("Chips",5)}
         };
         readonly int[] MoneyDenominations = new int[] { 1, 5, 10, 20, 50, 100, 500, 1000 };
@@ -80,7 +80,29 @@ namespace ConsoleApp1VendingMachine
 
         public void EndTransaction()
         {
-            throw new NotImplementedException();
+            int kr = 0;
+            int ore = 0;
+            if (moneypool > 0)
+            {
+                while (moneypool > 0)
+                {
+                    if (moneypool >= 1)
+                    {
+                        kr++;
+                        moneypool = moneypool - 1;
+                    }
+                    else if (moneypool >= 0.1M)
+                    {
+                        ore++;
+                        moneypool = moneypool - 0.1M;
+                    }
+                }
+                Console.WriteLine("Here's Your Change: {0}kr {1}ores",kr,ore);
+            }
+            else
+            {
+                Console.WriteLine("No money to return");
+            }
         }
         public void Examine(string ID)
         {

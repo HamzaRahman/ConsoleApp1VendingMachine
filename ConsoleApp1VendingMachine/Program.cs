@@ -20,6 +20,7 @@ namespace ConsoleApp1VendingMachine
                 Console.WriteLine("Enter 2 To Add Money");
                 Console.WriteLine("Enter 3 To Buy A Product");
                 Console.WriteLine("Enter 4 To Show A Product's Info");
+                Console.WriteLine("Enter 5 To End Transaction");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -51,6 +52,10 @@ namespace ConsoleApp1VendingMachine
                         VM.Examine(ID);
                         Console.WriteLine("Press Enter To Continue");
                         Console.ReadLine();
+                        break;
+                    case 5:
+                        VM.EndTransaction();
+                        ProductMenu = false;
                         break;
                 }
             }
