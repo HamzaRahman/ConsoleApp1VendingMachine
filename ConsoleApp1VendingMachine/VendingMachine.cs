@@ -4,10 +4,11 @@ using System.Text;
 
 namespace ConsoleApp1VendingMachine
 {
-    class VendingMachine : IVending
+    //Setting to public
+    public class VendingMachine : IVending
     {
         //int to decimal
-        static decimal moneypool = 0;
+        public static decimal moneypool = 0;
         Dictionary<string, Product> Products = new Dictionary<string, Product>()
         {{"P1",new Drink("CocaCola",5)},
          {"P2",new Drink("Pepsi",5)},
@@ -15,7 +16,10 @@ namespace ConsoleApp1VendingMachine
          {"P4",new Drink("Sprite",5)},
 
          {"P5",new Food("Chocolate",5.4M)},
-         {"P6",new Food("Chips",5)}
+         {"P6",new Food("Chips",3.77M)},
+
+         {"P7",new Toy("Car",5.4M)},
+         {"P8",new Toy("Doll",5.4M)},
         };
         readonly int[] MoneyDenominations = new int[] { 1, 5, 10, 20, 50, 100, 500, 1000 };
         public decimal Purchase(string ID)
@@ -78,8 +82,9 @@ namespace ConsoleApp1VendingMachine
             }
         }
 
-        public void EndTransaction()
+        public Dictionary<string, decimal> EndTransaction()
         {
+            Dictionary<string, decimal> Change = new Dictionary<string, decimal>();
             int kr = 0;
             int ore = 0;
             if (moneypool > 0)
@@ -91,18 +96,26 @@ namespace ConsoleApp1VendingMachine
                         kr++;
                         moneypool = moneypool - 1;
                     }
-                    else if (moneypool >= 0.1M)
+                    else if (moneypool >= 0.10M)
+                    {
+                        ore = ore+10;
+                        moneypool = moneypool - 0.10M;
+                    }
+                    else if (moneypool >= 0.01M)
                     {
                         ore++;
-                        moneypool = moneypool - 0.1M;
+                        moneypool = moneypool - 0.01M;
                     }
                 }
+                Change.Add("kr", kr);
+                Change.Add("ore", ore);
                 Console.WriteLine("Here's Your Change: {0}kr {1}ores",kr,ore);
             }
             else
             {
                 Console.WriteLine("No money to return");
             }
+            return Change;
         }
         public void Examine(string ID)
         {

@@ -57,6 +57,9 @@ namespace ConsoleApp1VendingMachine
                         VM.EndTransaction();
                         ProductMenu = false;
                         break;
+                    default:
+                        Console.WriteLine("Invalid Choice");
+                        break;
                 }
             }
             

@@ -10,6 +10,6 @@ namespace ConsoleApp1VendingMachine
         void ShowAll();
         //int to decimal
         decimal InsertMoney(int coin);
-        void EndTransaction();
+        Dictionary<string, decimal> EndTransaction();
     }
 }
