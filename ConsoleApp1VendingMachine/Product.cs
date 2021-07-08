@@ -37,7 +37,7 @@ namespace ConsoleApp1VendingMachine
             this.ProductName = productName;
             this.ProductPrice = price;
         }
-        public abstract void Examine();
-        public abstract void Use();
+        public abstract string Examine();
+        public abstract string Use();
     }
 }

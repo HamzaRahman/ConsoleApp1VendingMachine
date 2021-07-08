@@ -10,15 +10,18 @@ namespace ConsoleApp1VendingMachine
         {
 
         }
-        public override void Examine()
+        public override string Examine()
         {
-            
-            Console.WriteLine(Convert.ToString(this.ProductPrice),this.ProductName);
+            string message = (Convert.ToString(this.ProductPrice) + " | " + this.ProductName);
+            Console.WriteLine(message);
+            return message;
         }
 
-        public override void Use()
+        public override string Use()
         {
-            Console.WriteLine("Eat the Snack");
+            string message = "Eat the Snack";
+            Console.WriteLine(message);
+            return message;
         }
     }
 }

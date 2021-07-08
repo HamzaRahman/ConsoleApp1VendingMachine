@@ -1,12 +1,13 @@
-﻿using System;
+﻿using ConsoleApp1VendingMachine;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp1VendingMachine
+namespace ConsoleApp1VendingMachine_UnitTests
 {
-    public class Drink : Product
+    public class Product_Mock : Product
     {
-        public Drink(string productName, decimal price) : base (productName, price)
+        public Product_Mock(string productName, decimal price) : base(productName, price)
         {
 
         }
@@ -16,10 +17,9 @@ namespace ConsoleApp1VendingMachine
             Console.WriteLine(message);
             return message;
         }
-
         public override string Use()
         {
-            string message = "Drink the Drink";
+            string message = "Product Class Unit Test Succesful";
             Console.WriteLine(message);
             return message;
         }
